@@ -345,8 +345,19 @@
             <div class="dogma-banner">Central Dogma of Molecular Biology Explained</div>
         </div>
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="dogma-pill">The Cell</div>
+                    <div class="dogma-card" style="max-width: 100%;">
+                        <p>The cell acts as a protective container for an organism's master blueprint: <strong>DNA</strong><br><br>
+                        •&nbsp; In eukaryotic cells (like human, plant, or animal cells), DNA is tightly packed and sequestered inside the nucleus, protecting it from damaging chemical reactions occurring in the rest of the cell<br><br>
+                        •&nbsp; In prokaryotic cells (like bacteria), though they lack a nucleus, the cell confines the DNA to a specific region called the nucleoid</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-start" style="margin-top: 40px;">
+                <div class="col-6">
+                    <p class="cell-type-heading">Eukaryote</p>
                     <div class="reveal-container">
                         <img class="img-fluid reveal-image-bottom" width="2048" height="1622" src="assets/img/Cell%20inner.png">
                         <img class="img-fluid reveal-image-top" width="2048" height="1622" src="assets/img/Cell%20closed.png">
@@ -368,12 +379,31 @@
                         </span>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="dogma-pill">The Cell</div>
-                    <div class="dogma-card">
-                        <p>The cell acts as a protective container for an organism's master blueprint: <strong>DNA</strong><br><br>
-                        •&nbsp; In eukaryotic cells (like human, plant, or animal cells), DNA is tightly packed and sequestered inside the nucleus, protecting it from damaging chemical reactions occurring in the rest of the cell<br><br>
-                        •&nbsp; In prokaryotic cells (like bacteria), though they lack a nucleus, the cell confines the DNA to a specific region called the nucleoid</p>
+                <div class="col-6">
+                    <p class="cell-type-heading">Prokaryote</p>
+                    <div class="reveal-container">
+                        <img class="img-fluid reveal-image-bottom" width="2048" height="1622" src="assets/img/bacteria%20cell%20open.png">
+                        <img class="img-fluid reveal-image-top" width="2048" height="1622" src="assets/img/bacteria%20cell.png">
+                        <span class="cell-callout" style="left:56%;top:50.5%;">
+                            <span class="callout-dot"></span>
+                            <span class="callout-label">Nucleoid — region containing the circular bacterial DNA</span>
+                        </span>
+                        <span class="cell-callout" style="left:66%;top:31.5%;">
+                            <span class="callout-dot"></span>
+                            <span class="callout-label">Cell wall — rigid layer that maintains the cell's shape</span>
+                        </span>
+                        <span class="cell-callout" style="left:71%;top:17.5%;">
+                            <span class="callout-dot"></span>
+                            <span class="callout-label">Pili — hair-like structures used for attachment</span>
+                        </span>
+                        <span class="cell-callout" style="left:54%;top:82%;">
+                            <span class="callout-dot"></span>
+                            <span class="callout-label">Cytoplasm — where metabolism and translation occur</span>
+                        </span>
+                        <span class="cell-callout" style="left:14%;top:77.5%;">
+                            <span class="callout-dot"></span>
+                            <span class="callout-label">Flagella — whip-like tails that enable movement</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -381,15 +411,29 @@
     </section>
     <section>
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-start">
                 <div class="col-md-6">
                     <div class="dogma-pill">Transcription</div>
                     <div class="dogma-card">
-                        <p class="lh-lg" style="margin:0;">RNA polymerase copies a gene's DNA sequence into a complementary strand of messenger RNA (mRNA) — the first step of gene expression, carried out inside the nucleus.<br><br>
-                        •&nbsp; RNA polymerase binds a <strong>promoter</strong> sequence and unwinds the double helix, exposing the template strand<br><br>
-                        •&nbsp; It reads the template strand 3′→5′ and builds mRNA 5′→3′, pairing bases complementarily — RNA substitutes <strong>uracil (U)</strong> for thymine (T)<br><br>
-                        •&nbsp; Transcription ends when RNA polymerase reaches a <strong>terminator</strong> sequence, releasing the new pre-mRNA transcript<br><br>
-                        •&nbsp; Before export, pre-mRNA is processed into mature mRNA: a 5′ cap and poly-A tail are added, and non-coding <strong>introns</strong> are spliced out, leaving only the coding <strong>exons</strong></p>
+                        <h3 class="dogma-subhead">Eukaryotic protein-coding genes</h3>
+                        <p class="dogma-intro">RNA polymerase II transcribes a protein-coding gene’s DNA sequence into a complementary pre-mRNA transcript within the nucleus.</p>
+                        <ul class="dogma-list">
+                            <li>Transcription factors bind to the promoter and recruit RNA polymerase II. The DNA is locally unwound, exposing the template strand.</li>
+                            <li>RNA polymerase II reads the template strand 3′→5′ and synthesises pre-mRNA 5′→3′ through complementary base pairing. In RNA, uracil (U) replaces thymine (T).</li>
+                            <li>After the polyadenylation signal has been transcribed, the pre-mRNA is cleaved downstream of this signal, and RNA polymerase II eventually detaches from the DNA.</li>
+                            <li>The pre-mRNA is processed by the addition of a 5′ cap, removal of introns and joining of exons, and addition of a poly-A tail.</li>
+                            <li>The mature mRNA, which contains both coding regions and non-coding untranslated regions, is exported from the nucleus to the cytoplasm for translation.</li>
+                        </ul>
+
+                        <h3 class="dogma-subhead">Prokaryotic protein-coding genes</h3>
+                        <p class="dogma-intro">RNA polymerase transcribes a protein-coding gene’s DNA sequence into a complementary mRNA transcript within the cytoplasm.</p>
+                        <ul class="dogma-list">
+                            <li>The RNA polymerase holoenzyme, containing a sigma factor, recognises and binds to the promoter. The DNA is locally unwound, exposing the template strand.</li>
+                            <li>RNA polymerase reads the template strand 3′→5′ and synthesises mRNA 5′→3′ through complementary base pairing. In RNA, uracil (U) replaces thymine (T).</li>
+                            <li>Transcription ends through either intrinsic termination or Rho-dependent termination, causing the RNA transcript and RNA polymerase to be released.</li>
+                            <li>Prokaryotic mRNA generally undergoes little processing and may contain the coding sequences of several genes in a single polycistronic transcript.</li>
+                            <li>Because prokaryotic cells lack a nucleus, ribosomes can begin translating the mRNA while transcription is still occurring.</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -870,8 +914,6 @@
             </div>
         </div>
     </section>
-    <br>
-      <br>
     <section>
         <div class="dogma-banner-wrap">
             <div class="dogma-banner">Beyond the Dogma: Exceptions &amp; Nuances</div>
