@@ -1,0 +1,213 @@
+body {
+  background-color: #000;
+  background-image: radial-gradient(circle at 20% 30%, rgba(43, 224, 189, 0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(43, 224, 189, 0.1) 0%, transparent 40%), linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), repeating-linear-gradient(45deg, rgba(43, 224, 189, 0.03) 0px, rgba(43, 224, 189, 0.03) 1px, transparent 1px, transparent 10px);
+  background-attachment: scroll;
+  background-size: cover, cover, cover, 100px 100px;
+  background-repeat: repeat;
+  color: #fff;
+  min-height: 100vh;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  padding: 10px 0;
+}
+
+/* Breathing room between the page's major blocks (hero + each <section>) */
+body > .container,
+section {
+  padding: 60px 0;
+}
+
+@media (max-width: 767px) {
+  body > .container,
+  section {
+    padding: 40px 0;
+  }
+}
+
+.pinned-corner-graphic {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 150px;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.pinned-corner-graphic:hover {
+  opacity: 1;
+}
+
+/* Reusable "tab pill + glass card" pairing used by each dogma section
+   (Transcription, Translation, ...) so new sections don't need bespoke
+   fixed-pixel boxes like the first two sections do. */
+.dogma-pill {
+  display: inline-block;
+  background: #2be0bd;
+  color: #000;
+  font-weight: 700;
+  font-size: 23px;
+  padding: 10px 26px;
+  border-radius: 42px 42px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 2;
+  margin-left: 22px;
+  margin-bottom: -16px;
+}
+
+.dogma-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(20, 30, 30, 0.65);
+  color: #fff;
+  border-radius: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 36px;
+  max-width: 570px;
+  font-size: 14.5px;
+  line-height: 1.85;
+}
+
+.dogma-card p { margin: 0; }
+
+/* Sub-headed content within a dogma-card (e.g. Eukaryotic vs Prokaryotic),
+   with real list spacing instead of manual <br><br> gaps. */
+.dogma-card h3.dogma-subhead {
+  color: #2be0bd;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.dogma-card h3.dogma-subhead:not(:first-child) {
+  margin-top: 28px;
+}
+
+.dogma-card p.dogma-intro {
+  margin: 0 0 12px;
+}
+
+.dogma-card ul.dogma-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.dogma-card ul.dogma-list li {
+  margin-bottom: 12px;
+}
+
+.dogma-card ul.dogma-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Centered section banner (e.g. "Central Dogma of Molecular Biology Explained") */
+.dogma-banner {
+  display: inline-block;
+  max-width: 90%;
+  margin: 40px auto 30px;
+  text-align: center;
+  background: rgba(20, 30, 30, 0.65);
+  color: #2be0bd;
+  border-radius: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 15px 40px;
+  font-size: 24px;
+}
+
+.dogma-banner-wrap {
+  text-align: center;
+}
+
+.cell-type-heading {
+  text-align: center;
+  color: #2be0bd;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 14px;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 767px) {
+  .dogma-banner {
+    font-size: 17px;
+    padding: 12px 22px;
+    margin: 20px auto 24px;
+  }
+  .dogma-pill {
+    font-size: 19px;
+    padding: 9px 20px;
+  }
+  .dogma-card {
+    padding: 26px;
+    font-size: 14px;
+  }
+  .cell-type-heading {
+    font-size: 17px;
+  }
+}
+
+/* Shared label/caption system for the animated canvases (Transcription,
+   Translation, ...). Labels are positioned in JS via left/top on each
+   animation frame; these rules just handle their look and fade. */
+.t-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -140%);
+  background: rgba(20, 30, 30, 0.85);
+  border: 1px solid rgba(43, 224, 189, 0.4);
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease, left 0.05s linear, top 0.05s linear;
+  z-index: 6;
+}
+
+.t-label.t-fixed {
+  opacity: 0.55;
+  font-size: 11px;
+}
+
+.t-label.t-below { transform: translate(-50%, 40%); }
+
+.t-label.t-pink { border-color: rgba(255, 99, 164, 0.5); }
+.t-label.t-green { border-color: rgba(50, 205, 150, 0.6); }
+.t-label.t-purple { border-color: rgba(180, 140, 255, 0.5); }
+
+.t-caption {
+  margin: 14px 0 0;
+  min-height: 20px;
+  text-align: center;
+  color: #2be0bd;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: opacity 0.3s ease;
+}
+

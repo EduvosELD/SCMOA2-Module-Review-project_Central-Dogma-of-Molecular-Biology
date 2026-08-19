@@ -1,0 +1,151 @@
+.reveal-container {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.reveal-image-bottom {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.reveal-image-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), transparent 0px, black 0px);
+  mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), transparent 0px, black 0px);
+  transition: mask-image 0.2s ease, -webkit-mask-image 0.2s ease;
+}
+
+.reveal-container:hover .reveal-image-top,
+.reveal-container.touch-active .reveal-image-top {
+  -webkit-mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), transparent 0px, transparent 100px, black 150px);
+  mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), transparent 0px, transparent 100px, black 150px);
+}
+
+/* Touch devices have no hover — tapping/dragging on the image drives the
+   reveal instead (see image-reveal.js touch handlers). A subtle hint pulse
+   on first paint tells touch users the image is interactive. */
+@media (hover: none) {
+  .reveal-container:not(.touch-active)::after {
+    content: "Tap & drag to explore";
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    background: rgba(20, 30, 30, 0.75);
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(43, 224, 189, 0.4);
+    pointer-events: none;
+    z-index: 6;
+    white-space: nowrap;
+  }
+}
+
+/* Organelle callouts: sit inside the reveal peek-hole and light up when the
+   mouse (and therefore the reveal spotlight) is near their location. */
+.cell-callout {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.cell-callout.active {
+  opacity: 1;
+}
+
+.cell-callout .callout-dot {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border-radius: 50%;
+  background: #2be0bd;
+  box-shadow: 0 0 0 4px rgba(43, 224, 189, 0.25);
+}
+
+.cell-callout.active .callout-dot {
+  animation: callout-pulse 1.6s ease-out infinite;
+}
+
+.cell-callout .callout-label {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-6px);
+  white-space: nowrap;
+  background: rgba(20, 30, 30, 0.85);
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(43, 224, 189, 0.4);
+  font-size: 13px;
+  line-height: 1.3;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.cell-callout.active .callout-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Flip the label to the left side of the dot for callouts near the right edge */
+.cell-callout.label-left .callout-label {
+  left: auto;
+  right: 18px;
+  transform: translateY(-50%) translateX(6px);
+}
+
+.cell-callout.label-left.active .callout-label {
+  transform: translateY(-50%) translateX(0);
+}
+
+@keyframes callout-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(43, 224, 189, 0.5); }
+  100% { box-shadow: 0 0 0 10px rgba(43, 224, 189, 0); }
+}
+
+/* The two cells sit side by side even on narrow screens (for direct
+   comparison), so keep their hotspot labels compact there. */
+@media (max-width: 575px) {
+  .cell-callout .callout-dot {
+    width: 8px;
+    height: 8px;
+    box-shadow: 0 0 0 3px rgba(43, 224, 189, 0.25);
+  }
+  .cell-callout .callout-label {
+    font-size: 10.5px;
+    padding: 4px 8px;
+    left: 12px;
+    white-space: normal;
+    width: max-content;
+    max-width: 38vw;
+    line-height: 1.25;
+  }
+  .cell-callout.label-left .callout-label {
+    right: 12px;
+  }
+}
+
